@@ -1,15 +1,5 @@
-from datetime import datetime
+from google.adk.tools import FunctionTool
 
+from wsagent.services import get_user_msg
 
-def get_user_msg(ws_data, user, limit_days):
-    """ """
-    user_msgs = []
-
-    now = datetime.now()
-
-    for entry in ws_data:
-        delta = now - datetime.strptime(entry["date"], "%m/%d/%y")
-        if delta.days <= limit_days and entry["user"] == user:
-            user_msgs.append(entry)
-
-    return user_msgs
+user_msgs_tool = FunctionTool(func=get_user_msg)

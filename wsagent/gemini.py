@@ -1,11 +1,9 @@
-from google import genai
 from google.genai import types
 
 from google.adk.agents import Agent
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
 
-gemini = genai.Client()
 
 APP_NAME = "wsagent"
 USER_ID = "user_1"
