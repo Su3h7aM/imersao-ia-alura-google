@@ -4,11 +4,11 @@ import re
 
 
 def extract_zip(zip_path):
-    filename = os.path.basename(zip_path)
+    # filename = os.path.basename(zip_path)
 
-    filename = filename.lower().replace(" ", "").replace(".zip", "")
+    # filename = filename.lower().replace(" ", "").replace(".zip", "")
 
-    output_dir = f"./data/{filename}"
+    output_dir = "./data/teste"
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)

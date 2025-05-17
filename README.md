@@ -29,7 +29,7 @@ uv sync
 ou:
 
 ```bash
-pip install rich google-adk google-genai
+pip install -r requirements.txt
 ```
 
 ## Uso
@@ -38,6 +38,12 @@ pip install rich google-adk google-genai
    Exporte seu histórico de conversas do WhatsApp (`.zip`) e mova para `./data/`.
 
 2. **Execute o script**
+
+   ```bash
+   uv run main.py
+   ```
+
+    ou:
 
    ```bash
    python main.py
