@@ -52,19 +52,17 @@ pip install rich google-adk google-genai
 
 ## Exemplo de Fluxo
 
-```
-$bash main.py
+```bash main.py
 Limite de dias: 60
 Top 10 Usuários mais ativos
 ┏━━━━┳━━━━━━━━━━━━┳━━━━━━━━━━━┳━━━━━━━━━━━┓
-┃Rank┃Usuário    ┃Mensagens  ┃Emoção     ┃
+┃Rank┃Usuário     ┃Mensagens  ┃Emoção     ┃
 ┡━━━━╇━━━━━━━━━━━━╇━━━━━━━━━━━╇━━━━━━━━━━━┩
-│ 1  │ Alice      │ 345       │ feliz      │
-│ 2  │ Bruno      │ 298       │ engraçado  │
-│ …  │ …          │ …         │ …          │
+│ 1  │ Alice      │ 345       │ feliz     │
+│ 2  │ Bruno      │ 298       │ engraçado │
+│ …  │ …          │ …         │ …         │
 └────┴────────────┴───────────┴───────────┘
 Qual sua dúvida? quem enviou mais mensagens sobre o projeto?
 > João enviou 27 mensagens falando sobre o projeto nos últimos 60 dias.
 Prompt: fim
 ```
-
