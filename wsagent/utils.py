@@ -11,15 +11,22 @@ def print_top10(console, ws_data, limit_days):
     table.add_column("Mensagens", justify="center")
     table.add_column("Emoção", justify="center")
 
-    _, user_count = get_msgs_by_limit(ws_data=ws_data, limit_days=limit_days)
+    _, users_count = get_msgs_by_limit(ws_data=ws_data, limit_days=limit_days)
 
-    sorted_user_count = sorted(
-        user_count.items(), key=lambda item: item[1], reverse=True
+    sorted_users_count = sorted(
+        users_count.items(), key=lambda item: item[1], reverse=True
     )
 
-    for rank, (user, count) in enumerate(sorted_user_count, start=1):
-        rows = 0
-        if rows <= 10:
+    for rank, (user, count) in enumerate(sorted_users_count, start=1):
+        if rank <= 10:
             table.add_row(str(rank), user, str(count), "teste")
-            rows += 1
+
     console.print(table)
+
+
+def rank_list(list, limit):
+    sorted_list = sorted(list.items(), key=lambda item: item[1], reverse=True)
+
+    for rank, (user, count) in enumerate(sorted_list, start=1):
+        if rank <= limit:
+            table.add_row(str(rank), user, str(count), "teste")
