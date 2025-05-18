@@ -1,8 +1,14 @@
+import streamlit as st
+import os
 from google.genai import types
 
 from google.adk.agents import Agent
 from google.adk.runners import Runner
 from google.adk.sessions import InMemorySessionService
+
+api_key = os.environ["GOOGLE_API_KEY"]
+if not api_key or api_key == "":
+    os.environ["GOOGLE_API_KEY"] = st.secrets["GOOGLE_API_KEY"]
 
 
 APP_NAME = "wsagent"

@@ -47,11 +47,46 @@ def parse_txt(arquivo_txt):
     return parsed_data, list(users_unique)
 
 
+# def parse_whataspp(path):
+#     zip_output = extract_zip(path)
+#
+#     ws_txt = find_txt(zip_output)
+#
+#     ws_data, ws_users = parse_txt(ws_txt)
+#
+#     return ws_data, ws_users
+
+
 def parse_whataspp(path):
-    zip_output = extract_zip(path)
+    with zipfile.ZipFile(path, "r") as zip_ref:
+        txt_file_name = None
+        for file_info in zip_ref.infolist():
+            if file_info.filename.endswith(".txt") and not file_info.is_dir():
+                txt_file_name = file_info.filename
+                break
 
-    ws_txt = find_txt(zip_output)
+        if txt_file_name:
+            with zip_ref.open(txt_file_name) as txt_file:
+                content = txt_file.read().decode("utf-8")
+                pattern = re.compile(
+                    r"(\d{1,2}/\d{1,2}/\d{2}), (\d{2}:\d{2}) - (.*?): (.*)"
+                )
 
-    ws_data, ws_users = parse_txt(ws_txt)
+                parsed_data = []
+                users_unique = set()
 
-    return ws_data, ws_users
+                for line in content.splitlines():
+                    match = pattern.match(line)
+                    if match:
+                        date, time, user, message = match.groups()
+                        parsed_data.append(
+                            {
+                                "date": date,
+                                "time": time,
+                                "user": user,
+                                "message": message,
+                            }
+                        )
+                        users_unique.add(user)
+
+                return parsed_data, list(users_unique)
